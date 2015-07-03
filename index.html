@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="main.css">
+<script>
+var list = [];
+
+function addItem(item) {
+ list.push({x: item.value,y: Date()});
+ i = list.length - 1;
+     document.getElementById("list").innerHTML += list[i].x+", ";
+     document.getElementById("table").innerHTML += ("<tr><td>"+i+"</td><td>"+list[i].x+"</td><td>"+list[i].y+"</td><td id=button"+i+"><button type=&quot;button onclick=removeItem(this)>remove me</button></td></tr>");
+};
+
+function removeItem(buttonid) {
+document.getElementById("table").innerHTML = "<tr><th>num</th><th>task</th><th>when added</th></tr>";
+var index = buttonid.value.slice(-1);
+ list.splice(index,1);
+ 
+ for (i = 0; i <= list.length; i++) {
+    document.getElementById("table").innerHTML += ("<tr><td>"+i+"</td><td>"+list[i].x+"</td><td>"+list[i].y+"</td><td id=button"+i+"><button type=&quot;button onclick=removeItem(this)>remove me</button></td></tr>");
+ };
+
+};
+
+</script>
+</head>
+<body>
+<h1>Welcam to the Islands Man</h1>
+<h2>Here is a To Do List for you</h2>
+<input type="text" name="item" id="bla"><br>
+<button type="button" onclick="addItem(bla)">Add To List</button>
+<p id="list">History right here..</p>
+<table id="table">Rasta Stuff
+<tr>
+    <th>num</th>
+    <th>task</th> 
+    <th>when added</th>
+    
+  </tr>
+  
+ </table>
+<iframe width="420" height="345" src="http://www.youtube.com/embed/1tmwtOUlbM0?autoplay=1" frameborder="0" allowfullscreen></iframe>
+
+</body>
+</html>
