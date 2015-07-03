@@ -6,13 +6,13 @@ app.controller('general',function($scope, $timeout){
 	$scope.add = function (savedTask){
 		var date = new Date();
 		$scope.nowTime = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-		$scope.tasksList.push({name: savedTask,time: $scope.nowTime, logo: date});
+		$scope.tasksList.push({name: savedTask,time: $scope.nowTime});
 	}
 
-	$scope.tasksList.remove = function ($index){
-		$scope.tasksList.splice($index,1);
+	$scope.remove = function ($index){
+	 	$scope.tasksList.splice($index,1);
 	} 
-	});
+});
 
 
 // 	1. live \ cache --V
