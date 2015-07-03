@@ -6,10 +6,27 @@
 var list = [];
 
 function addItem(item) {
- list.push({x: item.value,y: Date()});
+  var d= new Date();
+  var time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+  //var year=d.getFullYear();
+ list.push({x: item.value,y: time});
  i = list.length - 1;
      document.getElementById("list").innerHTML += list[i].x+", ";
      document.getElementById("table").innerHTML += ("<tr><td>"+i+"</td><td>"+list[i].x+"</td><td>"+list[i].y+"</td><td id=button"+i+"><button type=&quot;button onclick=removeItem(this)>remove me</button></td></tr>");
+
+     /*
+     document.getElementById("rastaStuff").innerHTML +=("<li>
+      <ul id=liner><li>"+i+"</li><li>"+list[i].x+"task</li>
+      <li>"+list[i].y+"</li><li id=button"+i+"><button type=&quot;button onclick=removeItem(this)>remove me</button> </li> 
+      </ul>
+  </li>") 
+
+
+
+     ("<tr><td>"+i+"</td><td>"+list[i].x+"</td><td>"+list[i].y+"</td><td id=button"+i+"><button type=&quot;button onclick=removeItem(this)>remove me</button></td></tr>");
+
+*/
+
 };
 
 function removeItem(buttonid) {
@@ -31,7 +48,7 @@ var index = buttonid.value.slice(-1);
 <input type="text" name="item" id="bla"><br>
 <button type="button" onclick="addItem(bla)">Add To List</button>
 <p id="list">History right here..</p>
-<table id="table">Rasta Stuff
+<table id="table" border="1" style="width:100%">Rasta Stuff
 <tr>
     <th>num</th>
     <th>task</th> 
@@ -39,20 +56,37 @@ var index = buttonid.value.slice(-1);
       </tr>
 
  </table>
-<ol type="1">
-  <li>Coffee</li>
-  <li>Tea</li>
-  <li>Milk</li>
+
+<!--
+
+<ol type="1" id="rastaStuff">
+  <li>
+      <ul id="liner">
+      <li>num</li>
+      <li>task</li>
+      <li>when added</li>
+      </ul>
+  </li>
+  <li>
+      <ul id="liner">
+      <li>num</li>
+      <li>task</li>
+      <li>when added</li>
+      </ul>
+  </li>
+  <li>
+      <ul id="liner">
+      <li>num</li>
+      <li>task</li>
+      <li>when added</li>
+      </ul>
+  </li>
 </ol>
- <dl>
-  <dt>Coffee</dt>
-  <dd>- black hot drink</dd>
-  <dt>Milk</dt>
-  <dd>- white cold drink</dd>
-</dl>
-
+ -->
+ 
+<!--
 <iframe width="420" height="345" src="http://www.youtube.com/embed/1tmwtOUlbM0?autoplay=1" frameborder="0" allowfullscreen></iframe>
-
+-->
 </body>
 </html>
 

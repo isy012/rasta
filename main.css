@@ -1,0 +1,17 @@
+body {
+    background-color: #1E9600;
+}
+
+table {
+    background-color: #FFF200;
+    border-color: white;
+    border-width: 4px;
+}
+
+ul#liner li{
+	display: inline;
+
+}
+p {
+    background-color: #FF0000;
+} 
