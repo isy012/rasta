@@ -1,17 +1,40 @@
-var app = angular.module("myApp",[]);
-app.controller('general',function($scope, $timeout){
+var app = angular.module("myApp",['ngStorage']);
+app.controller('general',function($scope){
 
 	$scope.tasksList = [];
-	$scope.nowTime = '...'
+	$scope.tasksListCookies = [];
+	$scope.$storage = [];
+	$scope.nowTime = '...';
+	$scope.cookie = "No History";
+	
 	$scope.add = function (savedTask){
 		var date = new Date();
 		$scope.nowTime = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 		$scope.tasksList.push({name: savedTask,time: $scope.nowTime});
+		
+		//yay cookies
+		if (localStorage["tasksListCookies"]){
+			$scope.whateverInCookies = JSON.parse(localStorage["tasksListCookies"]);
+		 	$scope.whateverInCookies += $scope.whateverInCookies.concat($scope.tasksList);
+		 	localStorage["tasksListCookies"] = JSON.stringify($scope.whateverInCookies);
+		}
+		else{
+		 	localStorage["tasksListCookies"] = JSON.stringify($scope.tasksList);
+		 }
+		 $scope.cookie = JSON.parse(localStorage["tasksListCookies"]);
+		
 	}
+	$scope.removeCookies = function(){
+		localStorage["tasksListCookies"] = "";
+		$scope.cookie = "No History";
+	}
+
 
 	$scope.remove = function ($index){
 	 	$scope.tasksList.splice($index,1);
-	} 
+	}
+
+
 });
 
 

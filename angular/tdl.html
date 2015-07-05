@@ -4,29 +4,37 @@
     <link rel="stylesheet" type="text/css" href="main.css">
     <link rel="stylesheet" type="text/css" href="src/bootstrap.css">
     <script src="src/angular.js"> </script> 
-    <script src="app.js"> </script> 
+    <script src="app.js"> </script>
+    
+    <!-- a script that is handeling storing in cookies -->
+    <script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
+
     
   </head>
   <body ng-app="myApp">
   	<div ng-controller="general">
 		<h1>Welcam to the Islands Man</h1>
 	    <h2>Here is a To Do List for you</h2>
+	    
 	    <form ng-submit = "add(taskName)">
 	  	  <input ng-model='taskName'>
 	  	  <input type="submit" value="Submit" />
 		</form>
+		
 		<h3>Last Update at {{nowTime}}</h3>
-	    <dl>
-	    	<dt>{{taskName}}</dt>
-	    	<div ng-repeat="task in tasksList track by $index">
-		    	<dd>{{task.name}}</dd>
-		    	<dt>- {{task.time}}</dt>
-		    	<dt><button ng-click="remove($index)">Remove</button></dt>
-	    	</div>
-
-	    </dl>
 	    
-	    <!--<button type="button" onclick="addItem(bla)">Add To List</button> -->
+	    <ul name="cacheList">
+	    	<div ng-repeat="task in tasksList track by $index">
+		    	<li>{{task.name}}</li>
+		    	<li>-Added at {{task.time}}</li>
+		    	<button ng-click="remove($index)">Remove</button>
+	    	</div>
+	    </ul>
+	    <ul name="cookieList">
+	    	<li>{{cookie}}</li>
+	    	<button ng-click="removeCookies()">removeCookies</button>
+	    </ul>	
+
 	</div>	
   </body>
 </html>
