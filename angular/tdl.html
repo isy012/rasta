@@ -2,7 +2,7 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="main.css">
-    <link rel="stylesheet" type="text/css" href="src/bootstrap.css">
+    <!-- <link rel="stylesheet" type="text/css" href="src/bootstrap.css"> -->
     <script src="src/angular.js"> </script> 
     <script src="app.js"> </script>
     
@@ -23,16 +23,16 @@
 		
 		<h3>Last Update at {{nowTime}}</h3>
 	    
-	    <ul name="cacheList">
+	    <ul id="cacheList">
 	    	<div ng-repeat="task in tasksList track by $index">
 		    	<li>{{task.name}}</li>
 		    	<li>-Added at {{task.time}}</li>
 		    	<button ng-click="remove($index)">Remove</button>
 	    	</div>
 	    </ul>
-	    <ul name="cookieList">
-	    	<li>{{cookie}}</li>
+	    <ul >
 	    	<button ng-click="removeCookies()">removeCookies</button>
+	    	<li id="cookieList">{{cookie}}</li>
 	    </ul>	
 
 	</div>	
